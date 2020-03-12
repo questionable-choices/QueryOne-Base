@@ -39,7 +39,7 @@ Q.core.reloadCallback = function() {
 
 Q.core.reload = function() {
   // We hardcode these functions for .reload() until we load in Utilities
-  var copy = function(thing) { var out; if (null == thing || 'object' != typeof thing) return thing; if (thing instanceof Date) { out = new Date(); out.setTime(thing.getTime()); return out }; if (thing instanceof Array) { out = []; for (var i=0;i<thing.length;i++) { out[i] = mm.copy(thing[i]) }; return out }; if (thing instanceof Object) { out = {}; for (var attr in thing) { if (out.hasOwnProperty(attr)) { out[attr] = mm.copy(thing[attr]) } }; return out }; throw new Error('Unable to copy thing! Type not supported.'); }
+  var copy = function(thing) { var out; if (null == thing || 'object' != typeof thing) return thing; if (thing instanceof Date) { out = new Date(); out.setTime(thing.getTime()); return out }; if (thing instanceof Array) { out = []; for (var i=0;i<thing.length;i++) { out[i] = copy(thing[i]) }; return out }; if (thing instanceof Object) { out = {}; for (var attr in thing) { if (out.hasOwnProperty(attr)) { out[attr] = copy(thing[attr]) } }; return out }; throw new Error('Unable to copy thing! Type not supported.'); }
   var load = function(url) { var s = $('<script>', {'type':'text/javascript','src':url,})[0]; document.getElementsByTagName('head')[0].appendChild(s); }
   var rpad = function(str,len,char) { if (typeof str =='number') { str = str.toString() }; if (char == null) { char = ' ' }; var r = len - str.length; if (r < 0) { r = 0 }; return str + char.repeat(r); }
 
