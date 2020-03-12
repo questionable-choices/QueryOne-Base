@@ -10,7 +10,7 @@ Q.core.frontrunner = {}
 Q.core.frontrunner.list = [
  // Core Construction
   './core/jsUtility.js',
-  './core/jsCSSLoad.js',
+  './core/jsCSS.js',
   './core/jsGithub.js',
   './core/jsMaster.js',
   './core/jsConnect.js',
