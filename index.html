@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+ <head><title>QO</title>
+  <link rel='icon' type='image/png' href='./core/resources/icon.png' />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fastdom/1.0.9/fastdom.min.js'></script>
+  <script src='./core/extlib/gistachio.js'></script>
+  <script src='./core/extlib/axios.min.js'></script>
+  <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+ <style>
+ body {
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(23,39,45,1);
+  background-attachment: fixed; /* important */ }
+  body::-webkit-scrollbar { 
+    display: none; }
+ </style>
+ </head>
+ <body>
+ <div id='container'>
+ <div id='addenda' class='hidden'></div><div id='output'></div>
+ <div id='panel'>
+  <textarea id='input'></textarea>
+  <div id='reload' onclick='reload()'></div>
+  <a href="https://github.com/login/oauth/authorize?client_id=6e13bece29ffd812bb17&scope=gist" id='github' onclick=''></a>
+  <div id='performance'></div><div id='ping'></div>
+ </div>
+ </div>
+ </body>
+ <script src='./core/jsJS.js'></script>
+ <script>
+   var input  = $('#input')
+   var output = $('#output')
+   
+   var log = console.log
+   var getID = document.getElementById
+
+  $(window).on('load', function() {
+   if (jm) { 
+    jm.init()
+    jm.draw()
+    jm.ready()
+    if (jm.git) {
+      jm.git.begin() }
+   }
+  })
+ </script>
+</html>
